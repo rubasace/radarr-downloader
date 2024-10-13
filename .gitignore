@@ -1,0 +1,7 @@
+*
+
+!.drone.yaml
+!.gitignore
+!pom.xml
+!src
+!src/**
