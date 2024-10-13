@@ -1,6 +1,6 @@
 *
 
-!.drone.yaml
+!.drone.yml
 !.gitignore
 !pom.xml
 !src
