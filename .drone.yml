@@ -37,6 +37,6 @@ trigger:
     - promote
 ---
 kind: signature
-hmac: 53ce6d55ee2f1d595d0136612a37493ad626c4a18b4d05e0087ca0d9972bb2ef
+hmac: 70ad02670170cdc669c200db3e3ba6da650ff1a2268ca471459934c10d902309
 
 ...
