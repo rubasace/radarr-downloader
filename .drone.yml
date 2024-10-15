@@ -1,3 +1,4 @@
+---
 kind: pipeline
 type: kubernetes
 name: default
@@ -7,7 +8,18 @@ steps:
     image: maven:3.9.9-eclipse-temurin-21
     commands:
       - mvn -e clean package
-  - name: bake
+      - mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+    when:
+      branch:
+        - main
+
+  - name: prepare-image-layers
+    image: maven:3.9.9-eclipse-temurin-21
+    commands:
+      - mkdir -p target/dependency
+      - cd target/dependency
+      - jar -xf ../*.jar
+  - name: build-image
     image: plugins/docker
     settings:
       username:
@@ -23,3 +35,8 @@ trigger:
   event:
     - push
     - promote
+---
+kind: signature
+hmac: 53ce6d55ee2f1d595d0136612a37493ad626c4a18b4d05e0087ca0d9972bb2ef
+
+...
